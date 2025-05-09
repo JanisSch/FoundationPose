@@ -1,0 +1,35 @@
+NEW Try
+
+
+To use ocrrect libstidc version
+mv /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6 /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6.bak
+ln -s /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libstdc++.so.6 /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6
+
+how to run:
+source /opt/ros/jazzy/setup.bash && export PATH=/usr/local/cuda-12.4/bin${PATH:+:${PATH}} && python ./FoundationPoseROS2/foundationpose_ros_multi.py
+
+source /opt/ros/jazzy/setup.bash && ros2 launch realsense2_camera rs_launch.py enable_rgbd:=true enable_sync:=true align_depth.enable:=true enable_color:=true enable_depth:=true pointcloud.enable:=true
+
+
+//mit camera Parametern
+source /opt/ros/jazzy/setup.bash && ros2 launch realsense2_camera rs_launch.py enable_rgbd:=true enable_sync:=true align_depth.enable:=true enable_color:=true enable_depth:=true pointcloud.enable:=true params_file:=/home/jscheidegger/Documents/New_Try/static_camera_info.yaml
+
+
+//Falls ein file nicht ausführbar ist
+ndationPoseROS2/FoundationPose/mycpp/build$ sudo chmod 755
+ mycpp.cpython-312-x86_64-linux-gnu.so
+
+
+//Um Topic zu Publishen, damit FoundationPose Objekte neu versucht zu erkennen
+ros2 topic pub --once /redo std_msgs/msg/Bool '{data: true}'
+
+//conda environment aktivieren
+conda activate found
+
+//How to start Rviz with configuration File
+Documents/New_Try$ rviz2 -d /home/jscheidegger/Documents/New_Try/FoundationPoseROS2/foundationpose_ros.rviz
+
+
+//How to launch FoundationPose with launch.py file
+
+ros2 launch /home/jscheidegger/Documents/New_Try/FoundationPoseROS2/foundationpose_launch.py
