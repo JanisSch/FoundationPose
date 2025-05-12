@@ -83,6 +83,26 @@ conda create -n found python=3.10 -y
 # Activate conda environment
 conda activate found
 ```
+
+**Note:** The Conda environment must be created with the correct Python version according to the ROS2 distribution to ensure compatibility.  
+For example:
+- Use **Python 3.8** for ROS Foxy.
+- Use **Python 3.10** for ROS Humble.
+
+---
+
+Run the following commands to build the extensions:
+
+```bash
+cd FoundationPoseROS2 && export PATH=/usr/local/<YOUR_cuda-12.X_VERSION>/bin${PATH:+:${PATH}}~ && bash build_all_conda.sh
+```
+
+**Important:**
+```bash
+In the setup.py file located at /FoundationPose/bundlesdf/mycuda/, the C++ flags should be updated from C++14 to C++17 for compatibility with newer Nvidia GPUs.
+This can be done by modifying lines 18 and 19 in the file's nvcc_flags and c_flags sections.
+```
+
 ## Usage
 
 ### Starting the Camera
