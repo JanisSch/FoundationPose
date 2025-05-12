@@ -13,6 +13,9 @@ FoundationPose is a ROS2-based implementation for multi-object pose estimation a
 
 ## Table of Contents
 - [Installation](#installation)
+  -[Prerequisites](#prerequisites)
+  -[Dependencies](#dependencies)
+  -[Conda Environment Setup](#conda-environment-setup)
 - [Usage](#usage)
   - [Starting the Camera](#starting-the-camera)
   - [Running FoundationPose](#running-foundationpose)
@@ -80,17 +83,6 @@ conda create -n found python=3.10 -y
 # Activate conda environment
 conda activate found
 ```
-
-### Fix Library Issues
-
-If you encounter issues with libstdc++, use the following commands to fix them:
-
-```bash
-# Replace incompatible libstdc++ with system version
-mv /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6 /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6.bak
-ln -s /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libstdc++.so.6 /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6
-```
-
 ## Usage
 
 ### Starting the Camera
