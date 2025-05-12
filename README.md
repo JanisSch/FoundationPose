@@ -13,9 +13,9 @@ FoundationPose is a ROS2-based implementation for multi-object pose estimation a
 
 ## Table of Contents
 - [Installation](#installation)
-  -[Prerequisites](#prerequisites)
-  -[Dependencies](#dependencies)
-  -[Conda Environment Setup](#conda-environment-setup)
+   - [Prerequisites](#prerequisites)
+   - [Dependencies](#dependencies)
+   - [Conda Environment Setup](#conda-environment-setup)
 - [Usage](#usage)
   - [Starting the Camera](#starting-the-camera)
   - [Running FoundationPose](#running-foundationpose)
