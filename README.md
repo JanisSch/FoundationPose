@@ -90,11 +90,10 @@ cd FoundationPoseROS2 && export PATH=/usr/local/<YOUR_cuda-12.X_VERSION>/bin${PA
 ```
 
 **Important:**
-
 In the setup.py file located at /FoundationPose/bundlesdf/mycuda/, the C++ flags should be updated from C++14 to C++17 for compatibility with newer Nvidia GPUs.
 This can be done by modifying lines 18 and 19 in the file's nvcc_flags and c_flags sections.
----
 
+---
 ## Usage
 
 ### Starting the Camera
