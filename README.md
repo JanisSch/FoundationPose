@@ -210,9 +210,7 @@ distortion_coefficients:
 
 3. **Camera Not Found**: Ensure the RealSense camera is properly connected and the camera node is running.
 
-4. **Permission Issues**: If Python modules are not executable, use the chmod command mentioned in the installation section.
-
-5. **Different Camera Topics**: If using a different camera, modify the topic names in `foundationpose_ros_multi.py`.
+4. **Different Camera Topics**: If using a different camera, modify the topic names in `foundationpose_ros_multi.py`.
 
 ## License
 
