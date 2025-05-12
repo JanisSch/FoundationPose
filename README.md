@@ -27,7 +27,6 @@ FoundationPose is a ROS2-based implementation for multi-object pose estimation a
 - [Project Structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
-- [Contact](#contact)
 
 ## Installation
 
@@ -215,7 +214,3 @@ distortion_coefficients:
 ## License
 
 This project is released under the MIT License.
-
-## Contact
-
-For questions or issues, please open an issue on GitHub or contact the project maintainer.
