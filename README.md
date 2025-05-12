@@ -1,12 +1,11 @@
-# FoundationPoseROS2: Multi-Object Pose Estimation and Tracking in ROS2
+# Multi-Object Pose Estimation and Tracking in ROS2
 
 ## Description
 
-FoundationPoseROS2 is a ROS2-based implementation of FoundationPose for 6D object pose estimation and tracking. The system enables real-time detection, pose estimation, and tracking of multiple objects simultaneously using a RealSense camera and the Segment Anything Model 2 (SAM2).
+FoundationPose is a ROS2-based implementation for multi-object pose estimation and tracking. The system leverages NVIDIA FoundationPose for pose estimation, SAM (Segment Anything Model) for automatic segmentation, and SIFT (Scale-Invariant Feature Transform) for feature matching during the initial detection. It enables real-time detection, pose estimation, and tracking of multiple objects, seamlessly integrating with robotic systems.
 
 ### Key Features:
 - Multi-object pose estimation and tracking
-- SAM2-based automatic segmentation
 - ROS2 integration for use with robotic systems
 - Camera-to-base frame transformation
 - Simple GUI for object selection
@@ -29,16 +28,50 @@ FoundationPoseROS2 is a ROS2-based implementation of FoundationPose for 6D objec
 
 ## Installation
 
-### Dependencies
+### Prerequisites
 - Ubuntu
 - ROS2 Jazzy Jalisco
-- NVIDIA GPU with CUDA 12.4
+- Minimum 8GB NVIDIA GPU
+- CUDA 12.x
 - Intel RealSense camera
 - Python 3.10 or later
 
-### Conda Environment Setup
+### Dependencies
 
-Create and activate a Conda environment:
+```bash
+# Install ROS2 on Ubuntu
+sudo apt install ros-<ROS_DISTRO>-desktop
+
+# Install librealsense2
+sudo apt install ros-<ROS_DISTRO>-librealsense2*
+
+# Install debian realsense2 package
+sudo apt install ros-<ROS_DISTRO>-realsense2-*
+
+# Setup CUDA 12.x
+sudo apt-get --purge remove 'nvidia-*'
+sudo apt-get autoremove
+sudo reboot
+
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda
+
+# Install Miniconda
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+
+source ~/miniconda3/bin/activate
+```
+
+### Conda Environment Setup
+```bash
+# Clone repository
+git clone https://github.com/JanisSch/FoundationPose.git
+```
 
 ```bash
 # Create conda environment
@@ -58,15 +91,6 @@ mv /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6 /home/jscheidegger
 ln -s /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libstdc++.so.6 /home/jscheidegger/anaconda3/envs/found/lib/libstdc++.so.6
 ```
 
-### Fix Permission Issues
-
-If you encounter permission issues with Python modules:
-
-```bash
-# Make Python modules executable
-sudo chmod 755 /path/to/module.cpython-312-x86_64-linux-gnu.so
-```
-
 ## Usage
 
 ### Starting the Camera
@@ -82,7 +106,7 @@ Or with custom camera parameters:
 
 ```bash
 # With custom camera parameters
-source /opt/ros/jazzy/setup.bash && ros2 launch realsense2_camera rs_launch.py enable_rgbd:=true enable_sync:=true align_depth.enable:=true enable_color:=true enable_depth:=true pointcloud.enable:=true params_file:=/home/jscheidegger/Documents/New_Try/static_camera_info.yaml
+source /opt/ros/jazzy/setup.bash && ros2 launch realsense2_camera rs_launch.py enable_rgbd:=true enable_sync:=true align_depth.enable:=true enable_color:=true enable_depth:=true pointcloud.enable:=true params_file:path_to_your_file/static_camera_info.yaml
 ```
 
 ### Running FoundationPose
@@ -103,7 +127,7 @@ The easiest way to run the application is using the provided launch file which s
 
 ```bash
 # Run everything with a single launch file
-ros2 launch /home/jscheidegger/Documents/New_Try/FoundationPoseROS2/foundationpose_launch.py
+ros2 launch path_to_your_file/foundationpose_launch.py
 ```
 
 This launch file automatically starts the camera node and the FoundationPose node, making the setup process much simpler.
@@ -113,8 +137,9 @@ This launch file automatically starts the camera node and the FoundationPose nod
 To visualize the results in RViz using a pre-configured setup:
 
 ```bash
-rviz2 -d /home/jscheidegger/Documents/New_Try/FoundationPoseROS2/foundationpose_ros.rviz
+rviz2 path_to_your_file/foundationpose_ros.rviz
 ```
+Note: If you start the application using foundationpose_launch.py, RViz will be launched automatically with the pre-configured setup.
 
 ### Reset Object Detection
 
@@ -124,16 +149,21 @@ If you need to force the system to re-detect objects:
 ros2 topic pub --once /redo std_msgs/msg/Bool '{data: true}'
 ```
 
+Note: This topic can also be used by a robot performing automatic robotic assembly to publish a message, prompting the system to detect new objects in the environment.
+
 ## Adding New Objects
 
 To track new objects:
 
 1. Add mesh files (.obj or .stl) to:
-   ```
+   ```bash
    ./FoundationPoseROS2/demo_data/object_name/<OBJECT_MESH>.obj
    ```
-
-2. When running the application, a GUI will appear allowing you to select which objects to track and specify the maximum number of instances of each object that might appear in the scene.
+2. Run render_silhouettes.py to generate binary masks for the object. These masks will be saved in the following directory:
+   ```
+   ./FoundationPoseROS2/demo_data/object_name/object_name_silhouettes
+   ```
+3. When running the application, a GUI will appear allowing you to select which objects to track and specify the maximum number of instances of each object that might appear in the scene.
 
 ## Configuration
 
