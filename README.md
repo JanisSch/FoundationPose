@@ -215,8 +215,10 @@ distortion_coefficients:
 
 ## Acknowledgement
 
-This project incorporates and extends work from \href{https://github.com/ammar-n-abbas/FoundationPoseROS2}{FoundationPoseROS2} by Ammar N. Abbas. \\
-Significant portions of the codebase, especially the ROS2 integration and multi-object pose estimation pipeline, are adapted or extended from this repository. \\
+
+This project incorporates and extends work from [FoundationPoseROS2 by Ammar N. Abbas](https://github.com/ammar-n-abbas/FoundationPoseROS2).
+
+Significant portions of the codebase, especially the ROS2 integration and multi-object pose estimation pipeline, are adapted or extended from this repository.
 
 ## License
 
