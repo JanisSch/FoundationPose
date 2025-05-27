@@ -26,6 +26,7 @@ FoundationPose is a ROS2-based implementation for multi-object pose estimation a
 - [Configuration](#configuration)
 - [Project Structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
+- [Acknowledgement](#acknowledgement)
 - [License](#license)
 
 ## Installation
@@ -212,6 +213,13 @@ distortion_coefficients:
 
 4. **Different Camera Topics**: If using a different camera, modify the topic names in `foundationpose_ros_multi.py`.
 
+## Acknowledgement
+
+This project incorporates and extends work from \href{https://github.com/ammar-n-abbas/FoundationPoseROS2}{FoundationPoseROS2} by Ammar N. Abbas. \\
+Significant portions of the codebase, especially the ROS2 integration and multi-object pose estimation pipeline, are adapted or extended from this repository. \\
+
 ## License
 
 This project is released under the MIT License.
+
+
