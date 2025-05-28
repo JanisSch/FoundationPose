@@ -184,8 +184,9 @@ To track new objects:
    ./FoundationPoseROS2/demo_data/object_name/<OBJECT_MESH>.obj
    ```
 Note: The files must be in unit meters (m).
+
 2. Run render_silhouettes.py to generate binary masks for the object. These masks will be saved in the following directory:
-   ```
+   ```bash
    ./FoundationPoseROS2/demo_data/object_name/object_name_silhouettes
    ```
 3. When running the application, a GUI will appear allowing you to select which objects to track and specify the maximum number of instances of each object that might appear in the scene.
