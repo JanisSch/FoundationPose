@@ -71,8 +71,13 @@ source ~/miniconda3/bin/activate
 ```
 
 ### Conda Environment Setup
+
+#Create target directory and navigate into it
+mkdir -p FoundationPoseROS2
+cd FoundationPoseROS2
+
 ```bash
-# Clone repository
+# Clone repository into this directory
 git clone https://github.com/JanisSch/FoundationPose.git
 ```
 
@@ -153,6 +158,21 @@ ros2 topic pub --once /redo std_msgs/msg/Bool '{data: true}'
 ```
 
 Note: This topic can also be used by a robot performing automatic robotic assembly to publish a message, prompting the system to detect new objects in the environment.
+
+### Debugging and Mask Quality
+
+During runtime, the system automatically saves debugging information in the following directory:
+
+./FoundationPoseROS2/debug_masks/
+
+The contents include:
+
+- **Best generated masks** all candidate masks that could correspond to an object
+- **IoU scores (Intersection over Union)** evaluation scores for the best matching masks
+- **Debug image** visualizes the results after the initial detection phase
+
+These outputs are helpful for analyzing segmentation performance and improving object detection accuracy.
+
 
 ## Adding New Objects
 
