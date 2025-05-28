@@ -71,10 +71,11 @@ source ~/miniconda3/bin/activate
 ```
 
 ### Conda Environment Setup
-
+```bash
 #Create target directory and navigate into it
 mkdir -p FoundationPoseROS2
 cd FoundationPoseROS2
+```
 
 ```bash
 # Clone repository into this directory
