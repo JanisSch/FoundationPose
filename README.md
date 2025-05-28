@@ -233,7 +233,7 @@ distortion_coefficients:
 
 3. **Camera Not Found**: Ensure the RealSense camera is properly connected and the camera node is running.
 
-4. **Different Camera Topics**: If using a different camera, modify the topic names in `foundationpose_ros_multi.py`.
+4. **Different Camera Topics**: If using a different camera and publishing node, modify the topic names in `foundationpose_ros_multi.py`.
 
 ## Acknowledgement
 
