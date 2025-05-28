@@ -181,7 +181,7 @@ To track new objects:
 
 1. Add mesh files (.obj or .stl) to:
    ```bash
-   ./FoundationPoseROS2/demo_data/object_name/<OBJECT_MESH>.obj
+   ./FoundationPoseROS2/demo_data/object_name/
    ```
 Note: The files must be in unit meters (m).
 
