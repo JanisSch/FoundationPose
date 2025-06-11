@@ -212,6 +212,11 @@ distortion_coefficients:
 ├── static_camera_info.yaml      # Camera calibration parameters
 └── README.md                    # This documentation
 ```
+## Pipeline
+
+<p align="center">
+    <img src="FoundationPoseFlowchart.png" alt="Algorithm Pipeline" style="width: 50%; height: auto;"/>
+</p>
 
 ## Troubleshooting
 
